@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: hpwad-live-poi-map-app-dev
+  annotations:
+    argocd/app-name: hpwad-live-poi-map-app-dev
+    backstage.io/kubernetes-id: hpwad-live-poi-map-app
+    backstage.io/kubernetes-namespace: hpwad-live
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-test/hpwad-live-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.redhatdevhub.l07n.p1.openshiftapps.com/dev-pipelines/ns/hpwad-live/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.redhatdevhub.l07n.p1.openshiftapps.com/k8s/ns/hpwad-live/deployments/hpwad-live-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.redhatdevhub.l07n.p1.openshiftapps.com/#https://github.com/devhub-test/hpwad-live-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://hpwad-live-poi-map-app-hpwad-live.apps.redhatdevhub.l07n.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/hpgrahsl"
+  system: workshop-system-hpwad-live
+  consumesApis:
+    - gateway-api-hpwad-live
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-hpwad-live
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/hpgrahsl"
